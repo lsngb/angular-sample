@@ -10,7 +10,12 @@ export class TodoService {
   todosUrl:string = "https://jsonplaceholder.typicode.com/todos";
   todosLimit="?_limit=5";
   constructor(private http:HttpClient) { }
+
+  //Get Togos
   getTodos():Observable<Todo[]>{
   	return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
+
+  //Toggle Completed
+  
 }
