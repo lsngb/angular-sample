@@ -3,6 +3,12 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Todo} from "../models/Todo";
 import {Observable} from "rxjs";
 
+const httpOptions = {
+  headers:new HttpHeaders({
+    "Content-type":"application/Jason"
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,5 +23,9 @@ export class TodoService {
   }
 
   //Toggle Completed
-  
+  toggleCompleted(todo:Todo):Observable<any>{
+    const url = `${this.todosUrl}/${todo.id}`;
+    return this.http.put(url, todo, httpOptions)
+  }
+
 }
